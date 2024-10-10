@@ -5,21 +5,60 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
     </head>
-    <body>
+    <body id="bdy">
        <label for="">Nombre</label><br>
        <input type="text" id="txtNombre"><br>
+       <label for="">Apellidos</label><br>
+       <input type="text" id="txtApellidos"><br>
        <label for="">Salario</label><br>
-       <input type="text" id="txtSalario"><br>
+       <input type="number" id="txtSalario"><br>
        <label for="">Edad</label><br>
        <input type="text" id="txtEdad"><br><br>
-       <input type="button" value="Calcular" onclick="">
+       <input type="button" value="Calcular" onclick="calcular();">
+       <textarea id="txtRespuesta" disabled="disabled"></textarea>
 
         <script>
 
+                var calcSalario = (edad, salario) =>
+                {
+                    let resultado;
+                    if(salario >= 1000){
+                        resultado = ((edad > 45)?salario*1.03:salario*1.15).toFixed(2);
+                    }else{
+                        if(edad < 30)
+                            resultado = 1100;
+                        else
+                            resultado = ((edad > 45)?salario*1.15:salario*1.03).toFixed(2);
+                    }
+
+                    return resultado;
+                }
+
+
             function calcular()
             {
-                
+                salario = parseFloat(document.getElementById("txtSalario").value);
+                nombre = document.getElementById("txtNombre").value;
+                apellidos = document.getElementById("txtApellidos").value;
+                edad = parseFloat(document.getElementById("txtEdad").value);
+                respuesta = document.getElementById("txtRespuesta");
+
+                strResultado = "";
+
+                console.log(typeof(salario));
+
+                if(salario > 2000)
+                {
+                    strResultado = `${nombre} ${apellidos} tiene un total de ${salario}`;
+                }else
+                {
+                    strResultado = `${nombre} ${apellidos} tiene un total de ${calcSalario(edad, salario)}`;
+                }
+
+                respuesta.textContent = strResultado;
             }
+
+
 
         </script>
 
