@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 1.- Se trata de pedir al usuario un número a través de una ventana de entrada. Comprobar si
+        es un número. El resultado mostrarlo con una ventana emergente. -->
+        <label>Comprobar numero</label><br>
+        <input type="text" id="txtComprobacion">
+        <input type="button" value="Comprobar" id="btnComprobar" onclick="comprobacion();">
+
+        <script>
+            var comprobacion = () =>{(!isNaN(parseInt(document.getElementById("txtComprobacion").value)))? alert("es un numero"):alert("no es un numero rey")};
+        </script>
+
+    </body>
+</html>
