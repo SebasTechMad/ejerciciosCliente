@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ejercicio 4</title>
+    </head>
+    <body>
+        <label>Adivina el número</label><br>
+        <input type="number" id="txtNumIntroducido"><br>
+        <input type="button" value="comprobar" onclick="comprobar();"><input type="button" value="rendirse" onclick="rendirse();"><br><br>
+        <label id="lblRespuesta"></label>
+
+        <script>
+            var num_aleatorio = parseInt((Math.random()*1000)+1);
+            var txtComprobacion = document.getElementById("txtNumIntroducido");
+            var respuesta = document.getElementById("lblRespuesta");
+            var numIntentos = 0;
+
+            console.log(num_aleatorio);
+
+            rendirse = () =>{
+                respuesta.textContent = `bobo, no te rindas :( la respuesta es ${num_aleatorio}` ;
+            }
+
+            comprobar = () => {
+                numIntentos++;
+                if(num_aleatorio == txtComprobacion.value){
+                    respuesta.textContent = `ACERTASTES, CON ${numIntentos} INTENTOS`;
+                }else{
+                    (txtComprobacion.value < num_aleatorio)? respuesta.textContent = "El número aleatorio es más grande":respuesta.textContent ="El número aleatorio es más pequeño";
+                }
+            }
+
+
+
+        </script>
+    </body>
+</html>

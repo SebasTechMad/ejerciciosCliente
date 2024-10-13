@@ -11,12 +11,22 @@
         <textarea id="txtResultado"></textarea>
 
         <script>
-            resultado = document.getElementById("txtResultado").value;
-            resultado.style.width = "fit-content";
+            var resultado = document.getElementById("txtResultado");
+            var numero = document.getElementById("txtNumero");
 
 
-            function factorial(){
-                
+            function factorial()
+            {
+                calculos = 1;
+
+                console.log(parseInt(numero.value));
+
+                for(i=1;i<=parseInt(numero.value);i++)
+                {
+                    calculos *= i;
+                }
+
+                resultado.textContent = calculos;
             }
         </script>
     </body>
