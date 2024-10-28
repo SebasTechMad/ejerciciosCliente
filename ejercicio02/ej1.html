@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Media</title>
+    </head>
+    <body>
+        
+        <h1 id="txtResultado"></h1>
+
+
+        <script>
+            var cont = 0;
+            var valorinicial = 0;
+            let comprobacionWhile = false;
+            let cancelado = false;
+            let media = [];
+            let resultado = document.getElementById('txtResultado');
+
+            
+                while(!comprobacionWhile)
+                {
+                    try {
+                        let num = prompt("añade un número o cancélalo con 0");
+
+                        if(num === null){
+                            cancelado = true;
+                            break;
+                        }
+
+                        sumar = () =>{
+                            media.push(num);
+                            cont++;
+                        }
+
+                        num = parseInt(num);
+
+                        if(!isNaN(num)){
+                            (num==0) ? comprobacionWhile=true:sumar();
+                        }else{
+                            alert("error, introduce un número");
+                        }
+                    } catch (error) {
+                        alert(error);
+                    }
+                }
+
+                const sumaTotal = media.reduce(
+                (accumulator, currentValue) => accumulator + currentValue,
+                valorinicial,
+                );
+
+                (!cancelado) ? resultado.textContent = "La media sería de "+(sumaTotal/cont):"";
+
+        </script>
+    </body>
+</html>
