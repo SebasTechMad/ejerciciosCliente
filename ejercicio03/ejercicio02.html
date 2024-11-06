@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <label for="">Mensaje</label>
+        <br>
+        <input type="text" id="txtMensaje">
+        <br><br>
+        <label for="">Clave</label>
+        <br>
+        <input type="text" id="txtClave">
+        <br>
+        <input type="button" value="comprobar" onclick="generarClave();">
+        <br><br>
+        <input type="text" id="txtResultado">
+
+       <script>
+            let generarClave = () =>{
+
+                let mensaje = document.getElementById("txtMensaje").value;
+                let clave = document.getElementById("txtClave").value;
+                let resultado = document.getElementById("txtResultado").textContent;
+                let contClave = 0;
+                for(let i=0;i<mensaje.length;i++){
+                    
+                    if(contClave >= clave.length){
+                        contClave = 0;
+                    }
+
+                    resultado += mensaje[i] + clave[contClave];
+                    contClave++;
+                }
+            }
+       </script> 
+    </body>
+</html>
