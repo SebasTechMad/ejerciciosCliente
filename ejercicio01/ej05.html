@@ -9,10 +9,10 @@
         <textarea id="txtResultado" style="width: fit-content; height: 100%;"></textarea>
 
         <script>
-            altura = prompt("¿altura del triangulo?");
+            altura = prompt("¿Altura del triángulo?");
             alturaInt = parseInt(altura);
             resultado = document.getElementById("txtResultado");
-            
+            let altCambiar = 0;
 
             console.log(typeof(alturaInt));
             if(!isNaN(alturaInt))
@@ -23,9 +23,10 @@
                     {
                         resultado.value += "*";
                     }
+                    altCambiar += 20;
 
                     resultado.value += "\n";
-                    resultado.style.height = "auto"; 
+                    resultado.style.height = `${altCambiar}px`; 
 
                 }
             }

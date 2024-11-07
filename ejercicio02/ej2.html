@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 2</title>
+    </head>
+    <body>
+        <label for="txtGenChar">Caracter aleatorio</label><br><input type="text" id="txtGenChar"><input type="button" onclick="generateCharRand();" value="ver" id="btnGenerarCharRand"><br>
+        <label for="txtCharClave">Caracter clave</label><br><input type="text" id="txtCharClave"><input type="button" onclick="showKeyChar();" value="ver" id="btnShowCharClave"><br>
+        <script>
+            let palabra = "";
+            let keyChar = "";
+            let keyIsActivated = false;
+
+            let verRandom = document.getElementById('btnGenerarCharRand');
+            let verClave = document.getElementById('btnShowCharClave');
+            let txtGenerarChar = document.getElementById('txtGenChar');
+            let txtCharClave = document.getElementById('txtCharClave');
+
+            let generateCharRand = () =>{
+                let numRand = Math.floor(Math.random() * (palabra.length - 0) );
+                txtGenerarChar.value = palabra.charAt(numRand);
+
+                if(keyIsActivated && keyChar === txtGenerarChar.value){
+                    verRandom.disabled = "disabled";
+                }
+            }
+
+            let showKeyChar = () =>{
+                txtCharClave.value = keyChar;
+                keyIsActivated = true;
+                verClave.disabled = "disabled";
+            }
+            
+            while(true)
+            {
+                palabra = prompt("Introduce la/s palabras que deseas");
+                if(palabra != null && palabra.length > 2){
+                    break;
+                }
+            }
+
+            keyChar = palabra.charAt(Math.floor(Math.random() * (palabra.length - 0) + 1));
+
+            
+            
+        </script>
+    </body>
+</html>

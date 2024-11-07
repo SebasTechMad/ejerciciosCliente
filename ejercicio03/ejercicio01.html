@@ -9,13 +9,26 @@
         
         <script>
             let numeros = new Array(4,0,3,4,7,3,5,8,1,8,8,0,2,3,1,2,5,7,3,2,5,1);
-
+            let index = 0;
+            let resultado = new Array();
             //filter hace otro array y mete valores al nuevo array SI SE CUMPLE LAS CONDICIONES
-            let result = numeros.filter((item,index)=>{
-                return numeros.indexOf(item) === index;
-            })
+            // let result = numeros.filter((item,index)=>{
+            //     return numeros.indexOf(item) === index;
+            // });
 
-            console.log(result);
+            numeros.forEach((positionArray) =>{
+                console.log(positionArray);
+                console.log("posicion que se encuentra = "+numeros.indexOf(positionArray));
+                if(index == numeros.indexOf(positionArray)){
+                    console.log(positionArray);
+                    resultado.push(positionArray);
+                }
+
+                index++;
+            });
+
+
+            console.log(resultado);
         </script>
     </body>
 </html>
