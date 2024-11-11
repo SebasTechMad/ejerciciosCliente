@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            table{
+                border: green solid 2px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+                let cont = 0;
+                let x = 0;
+                let y = 0;
+
+                while(x < 50)
+                {
+                    let comprobacion = false;
+                    while(!comprobacion)
+                    {
+                        let rowNumeros;
+                        let numerosRandoms = new Array();
+                        for(let i=0;i<6;i++)
+                        {
+                            numerosRandoms.push(parseInt(Math.random() * 48 + 1));
+                        }
+
+                        rowNumeros = new Set(numerosRandoms);
+
+                        if(rowNumeros.size == 6){
+                            console.log(rowNumeros);
+                            comprobacion = true;
+                        }
+
+                    }
+
+                    x++;
+                }
+        </script>
+    </body>
+</html>

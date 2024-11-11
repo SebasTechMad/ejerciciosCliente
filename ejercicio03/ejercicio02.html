@@ -19,7 +19,7 @@
         <br><br>
         <input type="text" id="txtResultado">
 
-       <script>
+       <script charset="UTF-8">
             let generarClave = () =>{
 
                 let mensaje = new String(document.getElementById("txtMensaje").value);
@@ -33,9 +33,14 @@
                         contClave = 0;
                     }
 
-                    console.log(mensaje.charCodeAt(i) + clave.charCodeAt(contClave));
-                    //cadena += String.fromCharCode((mensaje.charCodeAt(i) + clave.charCodeAt(contClave)));
-                    cadena = String.fromCharCode(153);
+                    //console.log(String.fromCharCode( mensaje.charCodeAt(i) + clave.charCodeAt(contClave) ));
+                    console.log(mensaje.charCodeAt(i));
+                    console.log(clave.charAt(contClave));
+                    let letra = (mensaje.charCodeAt(i) + parseInt(clave.charAt(contClave)) );
+                    console.log(letra);
+                    // Convertir el código a un carácter
+                    cadena += String.fromCharCode(letra);
+
                     contClave++;
                 }
 
