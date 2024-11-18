@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <label for="">introduce la primera frase</label><br><input type="text" name="" id="txtPrimero"><br>
+        <label for="">introduce la segunda frase</label><br><input type="text" name="" id="txtSegundo"><br><br>
+        <button onclick="comprobacion()">comprobar</button>
+    </body>
+    <script>
+        let comprobacion = () =>{
+            let primero = document.getElementById("txtPrimero").value;
+            let segundo = document.getElementById("txtSegundo").value;
+            let array = new Array();
+            let comprobacion = true;
+
+            for (let index = 0; index < primero.length; index++){
+                
+                let palabra = primero.charCodeAt(index);
+
+                if(palabra != " ")
+                {
+                    console.log(palabra);
+                    switch (palabra) {
+                        case 225:
+                            palabra = 97;
+                            break;
+                        case 233:
+                            palabra = 101;
+                            break;
+                        case 237:
+                            palabra = 105;
+                            break;
+                        case 243:
+                            palabra = 111;
+                            break;
+                        case 250:
+                            palabra = 117;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    palabra = String.fromCharCode(palabra);
+                    array.push(palabra);   
+                }
+            }
+            console.log(array);
+        }
+    </script>
+</html>
+        
