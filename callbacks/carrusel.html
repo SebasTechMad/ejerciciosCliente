@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            main{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .carrusel{
+                width: 80%;
+                height: 20vh;
+            }
+
+            .blue{
+                width: 0%;
+                height: 100%;
+                background-color: blue;
+            }
+
+            .red{
+                width: 100%;
+                height: 100%;
+                background-color: red;
+            }
+
+            .green{
+                width: 0%;
+                height: 100%;
+                background-color: green;
+            }
+
+        </style>
+    </head>
+    <body onload="loadCarrusel();">
+        <main>
+            <div class="carrusel">
+                <div class="red" id="drojo"><br></div>
+                <div class="blue" id="dazul"><br></div>
+                <div class="green" id="dverde"><br></div>
+            </div>
+        </main>
+        <script>
+            let rojo = document.getElementById("drojo");
+            let verde = document.getElementById("dverde");
+            let azul = document.getElementById("dazul");
+            let cont = 0;
+
+            let loadCarrusel = () =>{
+                setInterval(changeCarrusel, 3000);
+            }
+
+            let changeCarrusel = () =>{
+                if(cont == 3){
+                    cont = 0;
+                }
+
+                switch (cont) {
+                    case 0:
+                        rojo.style.width= "100%";
+                        verde.style.width= "0%";
+                        azul.style.width= "0%";
+                        break;
+
+                    case 1:
+                    rojo.style.width= "0%";
+                    verde.style.width= "100%";
+                    azul.style.width= "0%";
+                    break;
+
+                    case 2:
+                        rojo.style.width= "0%";
+                        verde.style.width= "0%";
+                        azul.style.width= "100%";
+                        break;
+
+                    default:
+                        break;
+                }
+
+
+
+                cont++;
+            }
+        </script>
+    </body>
+</html>

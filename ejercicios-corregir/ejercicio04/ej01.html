@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            section{
+                display: flex;
+                flex-direction: row;
+                gap: 4rem;
+            }
+        </style>
+    </head>
+    <body>
+        <label for="txtNumeros" style="margin-right: 2rem;">Introduzca números</label><input type="text" id="txtContador" readonly value="10" style="width: 2.3rem; font-size: 2rem; text-align: center;"><br><br><br>
+        <input type="number" name="" id="txtNumeros"><br><br>
+        <input type="button" value="Añadir" onclick="addNumber();"><input type="button" value="Visualizar" onclick="visualizarNumeros();">
+        <br><br><br>
+
+        <section>
+            <div hidden="hidden">
+                <h2>par</h2>
+                <textarea name="" id="txtPar"></textarea>
+            </div>
+            <div hidden="hidden">
+                <h2>impar</h2>
+                <textarea name="" id="txtImpar"></textarea>
+            </div>
+        </section>
+        
+    <script>
+        let numeros = new Array();
+        let txtNumeros;
+        let contador = document.getElementById("txtContador");
+        let divClasificar = document.getElementsByTagName("div");
+        let par = document.getElementById("txtPar");
+        let impar = document.getElementById("txtImpar");
+        
+        
+        let addNumber = () =>{
+            txtNumeros = document.getElementById("txtNumeros").value;
+            let resultCont = parseInt(contador.value);
+
+
+            txtNumeros = parseInt(txtNumeros);
+            
+            if(!isNaN(txtNumeros)){
+                if(resultCont > 0){
+                    numeros.push(txtNumeros);
+                    contador.value = resultCont - 1;
+                }else{
+                    alert("gordinflas esto ya no cabe na");
+                }
+            }else{
+                alert("tontopoia pon un numero");
+            }
+        }
+
+
+        let visualizarNumeros = () =>{
+            divClasificar[0].style.display = "block";
+            divClasificar[1].style.display = "block";
+            clasificarNumeros();
+        }
+
+        let clasificarNumeros = () =>{
+
+            let index = 0;
+
+            const intervalo = setInterval(() => {
+                if(index < 10){
+
+                    (numeros[index] % 2 == 0) ? par.value += numeros[index] + "\t" : impar.value += numeros[index] + "\t";
+
+
+
+                    index++;
+                }else{
+                    clearInterval(intervalo);
+                }
+            }, 100);
+
+
+
+        }
+
+    </script>
+    </body>
+</html>

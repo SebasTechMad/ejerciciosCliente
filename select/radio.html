@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <main>
+            <h1>te apetece jugar Monster hunter</h1><br>
+            <input type="radio" name="opcion" value="si">ci<br>
+            <input type="radio" name="opcion" value="no">no<br>
+            <input type="button" value="Comprobar" onclick="comprobar();">
+        </main>
+        <script>
+            let comprobar = () =>{
+                let opcion = document.getElementsByName("opcion");
+                
+                for (let index = 0; index < opcion.length; index++) {
+                    if(opcion[index].checked == true ){
+                        
+                        if(opcion[index].value == "si"){
+                            alert("amos a jugar");
+                        }else{
+                            (opcion[index].value == "no") ? alert("pos no juguemos"):"";
+                        }
+                    }
+                }
+                
+
+
+
+            }
+        </script>
+    </body>
+</html>
