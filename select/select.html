@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Elige juegos</h1>
+        <form action="">
+            <select name="juego" id="mnuJuegos" multiple>
+                <option value="mh">Monster Hunter</option>
+                <option value="csgo">Counter</option>
+                <option value="valorant">Valorant</option>
+                <option value="lol">ligo leyens</option>
+                <option value="dota">dota</option>
+            </select>
+
+            <input type="checkbox" name="condiciones" id="">a</input>
+
+
+            <input type="button" value="comprobar" onClick="comprobar(this.form)">
+        </form>
+
+        <script>
+            
+            let comprobar = (opciones) =>{
+                seleccionado = opciones.juego.selectedOptions;
+                for (const juego of seleccionado) {
+                    alert(juego.value);
+                }
+
+                condiciones = opciones.condiciones.checked;
+
+                (condiciones == true) ? alert("aceptas las condiciones") :alert("no las aceptas rey");
+                
+            }
+
+
+
+        </script>
+    </body>
+</html>
