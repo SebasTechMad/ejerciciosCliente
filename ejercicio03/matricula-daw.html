@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            main{
+                display: flex;
+                flex-direction: column;
+            }
+
+            button{
+                margin-top: 3rem;
+                width: fit-content;
+            }
+
+            section{
+                display: flex;
+                flex-direction: row;
+                gap: 3rem;
+            }
+
+            section.curso, section.resultado{
+                display: flex;
+                flex-direction: column;
+                gap: 0rem;
+            }
+        </style>
+    </head>
+    <body onload="cargarVariables();">
+        <main>
+        <h1>MATRICULA DE DAW</h1>
+        <section class="curso">
+            <h2>Curso</h2>
+            <div class="materias">
+                <input type="radio" name="curso" id="chkPrimero">
+                <label for="chkPrimero">Primero</label>
+                <input type="radio" name="curso" id="chkSegundo">
+                <label for="chkSegundo">Segundo</label>
+            </div>
+        </section>
+
+        <section>
+            <div class="materias">
+                <h2>MATERIAS</h2>
+                
+                <input type="checkbox" name="servidor" id="chkServidor"><label for="chkServidor">Servidor</label><br>
+                <input type="checkbox" name="interfaces" id="chkInterfaces"><label for="chkInterfaces">Interfaces</label><br>
+                <input type="checkbox" name="cliente" id="chkCliente"><label for="chkCliente">Cliente</label><br>
+                <input type="checkbox" name="despliegue" id="chkDespliegue"><label for="chkDespliegue">Despliegue</label><br>
+                <input type="checkbox" name="ingles" id="chkIngles"><label for="chkIngles">Ingles</label><br>
+                <input type="checkbox" name="empresa" id="chkEmpresa"><label for="chkEmpresa">Empresa</label><br>
+            </div>
+
+            <div class="convalidaciones">
+                <h2>CONVALIDACIONES</h2>
+                <select name="convalidaciones" multiple>
+                    <option value="ingles">Ingles</option>
+                    <option value="empresa">Empresa</option>
+                </select>
+            </div>
+        </section>
+
+        <button>Matricularse</button>
+
+        <section class="resultado">
+            <h2>Informe de solicitud matrícula</h2>
+            <textarea name="" id="txtResultado"></textarea>
+        </section>
+        
+        </main>
+        
+        <script>
+            let curso;
+            let materias;
+            let resultado;
+            
+
+            
+            let cargarVariables = () =>{
+                resultado = document.getElementById("txtResultado");
+            }
+
+            let leerDatos = () =>{
+
+            }
+
+            let isFormularioCompleto = () =>{
+                let comprobacion = true;
+
+                
+
+
+                return comprobacion;
+            }
+
+            
+
+        </script>
+    </body>
+</html>

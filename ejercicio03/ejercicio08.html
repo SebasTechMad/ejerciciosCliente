@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            table,th,td{
+                border: solid black 1px;
+                border-collapse: collapse;
+            }
+
+        </style>
+    </head>
+    <body>
+        
+
+
+        <script>
+            let generarNumRandoms = () =>{
+                let numeros = new Array();
+                for (let i = 0; i < 10000; i++) {
+                    numeros.push(Math.floor(Math.random() * 11 + 1));
+                }
+                return numeros;
+            }
+
+            let countNumArray = (array, num) =>{
+                let cont = 0;
+                for (const index of array) {
+                    (index == num) ? cont++:"nada xd";
+                }
+
+                return cont;
+            }
+
+            let generarDatos = () =>{
+                document.write("<table><tr><th colspan='2'>Tabla de frecuencias</th><tr>");
+                let array = generarNumRandoms();
+                for(let i=1;i<11;i++)
+                {
+                    document.write(`<tr><th>numero ${i}</th><td>${countNumArray(array,i)}</td>`);
+                }
+
+                console.log(countNumArray(array,0));
+            }
+
+
+
+            generarDatos();
+
+            
+        </script>
+    </body>
+</html>

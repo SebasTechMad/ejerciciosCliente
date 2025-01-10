@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            html,body{
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            th{
+                background-color: black;
+                color: white;
+            }
+
+            td{
+               border: solid black 2px; 
+            }
+            
+            table,th,td{
+                text-align: center;
+                border-collapse: collapse;
+                padding: .6rem;
+            }
+
+            fieldset{
+                margin-top: 5rem;
+                display: flex;
+                flex-direction: column;
+                gap: .4rem;
+            }
+
+            .opciones{
+                margin-top: 1rem;
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="">
+            <fieldset>
+                <legend>FORMULARIO</legend>
+                <span>titulo</span>
+                <input type="text" name="datos" id="">
+
+                <span>Autor</span>
+                <input type="text" name="datos" id="">
+
+                <span>Editorial</span>
+                <input type="text" name="datos" id="">
+
+                <div class="opciones">
+                    <input type="button" value="add" onclick="addLibro();">
+                    <input type="button" value="visualizar" onclick="visualizarLibros();">
+                </div>
+            </fieldset>
+        </form>
+
+        <table id="tLibros" style="border: solid black 2px;"></table>
+
+
+
+        <script>
+
+            let libros = new Libros();
+
+            function Libros() 
+            {
+                listadoLibros = new Array();
+
+                Libros.prototype.add = function add(libro) {
+                    listadoLibros.push(libro);
+                    console.log(listadoLibros);
+                }
+
+                Libros.prototype.getLista = function getLista(){
+                    return listadoLibros;
+                }
+            }
+
+            function Libro(titulo, autor, editorial)
+            {
+                this.titulo = titulo;
+                this.autor = autor;
+                this.editorial = editorial;
+
+                Libro.prototype.getTitulo = function getTitulo() {
+                    return this.titulo;
+                }
+
+                Libro.prototype.getAutor = function getAutor() {
+                    return this.autor;
+                }
+
+                Libro.prototype.getEditorial = function getEditorial() {
+                    return this.editorial;
+                }
+            }
+
+            let addLibro = () =>{
+                libros.add(new Libro(document.getElementsByName("datos")[0].value,
+                document.getElementsByName("datos")[1].value,document.getElementsByName("datos")[2].value) );
+                console.log(libros);
+            }
+
+            let visualizarLibros = () =>{
+                let resultadoHTML = "";
+                resultadoHTML = "<tr><th>Nombre</th><th style='border-left: solid white 2px; border-right: solid white 2px;'>Autor</th><th>Editorial</th></tr>";
+                console.log(resultadoHTML);
+
+                for (const libro of libros.getLista()) {
+                    resultadoHTML += "<tr> <td>"+libro.titulo+ "</td> <td>"+libro.autor+"</td> <td>"+libro.editorial+"</td> </tr>";
+                }
+
+                document.getElementById("tLibros").innerHTML = resultadoHTML;
+            }
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

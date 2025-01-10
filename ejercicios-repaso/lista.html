@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body onload="cargarDatos();">
+        <h2>nombre</h2>
+        <input type="text" name="" id="txtNombre">
+        <br><br>
+        <h1>lista</h1>
+        <br><textarea readonly id="txtResultado"></textarea>
+        <br><br>
+        <input type="button" id="btnAdd" onclick="addUser();" value="Añadir">
+        <input type="button" id="btnEliminar" onclick="borrarUser();" value="Eliminar">
+        <input type="button" id="btnVisualizar" onclick="visualizarNombres();" value="Visualizar">
+
+        <script>
+            let nombre;
+            let resultado;
+            let listadoNombres = new Set();
+            let btnAdd;
+            let btnEliminar;
+            let btnVisualizar;
+
+            let cargarDatos = () =>{
+                nombre = document.getElementById("txtNombre");
+                resultado = document.getElementById("txtResultado");
+                btnAdd = document.getElementById("btnAdd");
+                btnEliminar = document.getElementById("btnEliminar");
+                btnVisualizar = document.getElementById("btnVisualizar");
+            }
+
+
+            let addUser = () =>{
+                listadoNombres.add(nombre.value);
+                console.log(listadoNombres);
+            }
+
+            let borrarUser = () =>{
+                if(listadoNombres.has(nombre.value)){
+                    listadoNombres.delete(nombre.value);
+                }
+            }
+
+            let visualizarNombres = () =>{
+                resultado.value = "";
+                for (const currentNombre of listadoNombres) {
+                    resultado.value += currentNombre + "\t";
+                }
+            }
+        </script>
+    </body>
+</html>

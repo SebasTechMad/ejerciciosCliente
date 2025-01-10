@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ordenadores</title>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+    <body onload="cargarVariables();">
+        <!-- 2.- Crea una interfaz gráfica que permita introducir datos relativos a ordenadores y que pueda visualizarlos, después, ante una consulta.
+        Propiedades:
+        Marca(texto), Modelo(texto), Memoria RAM(número que indica GB de capacidad), SD (número que indica capacidad), Microprocesador(texto de Código modelo), Gráfica(texto de código de modelo).
+        Por cada propiedad una caja de texto.
+        Además, en la interfaz se añadirán dos imágenes, una para la gráfica y otra para el micropropcesador.
+        Método:
+        Se deberá crear un método que permita mostrar en modo string las propiedades del objeto ordenador.  -->
+
+        <div class="container d-flex justify-content-center">
+            <form class="d-flex flex-column col-5 gap-2 rounded-4 shadow-lg p-3" style="margin-top: 4rem;">
+                <div class="form-floating">
+                    <input type="text" id="txtMarca" class="form-control" placeholder="Marca">
+                    <label for="txtMarca">Marca</label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="text" id="txtModelo" class="form-control" placeholder="Modelo">
+                    <label for="txtModelo">Modelos</label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="text" id="txtRam" class="form-control" placeholder="Memoria RAM">
+                    <label for="txtRam">Memoria RAM</label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="text" id="txtSsd" class="form-control" placeholder="SSD">
+                    <label for="txtSsd">SSD</label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="text" id="txtProcesador" class="form-control" placeholder="Microprocesador">
+                    <label for="txtMicro">Microprocesador</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" id="txtGrafica" class="form-control" placeholder="Tarjeta gráfica">
+                    <label for="txtGrafica">Tarjeta gráfica</label>
+                </div>
+
+                <div class="mb-4">
+                    <label for="portatil">¿Es un portatil?</label>
+                    <input type="radio" class="form-check-input" name="portatil" id="chkSi"><label for="chkSi">si</label>
+                    <input type="radio" class="form-check-input" name="portatil" id="chkNo"><label for="chkNo">no</label>
+                </div>
+
+                <div>
+                    <input type="button" class="btn btn-primary" id="btnAdd" onclick="add();" value="añadir">
+                    <input type="button" class="btn btn-primary" id="btnConsultar" onclick="consultar();" value="consultar">
+                    <input type="button" class="btn btn-primary" id="btnBorrar" onclick="add();" value="borrar">
+                    <input type="button" class="btn btn-primary" id="btnBorrarCampos" onclick="add();" value="borrar campos">
+                </div>
+            </form>
+        </div>
+
+        <br><br><br>
+
+        <div id="render">
+
+        </div>
+
+        
+
+        <script>
+
+            let ordenadores = new Array();
+            
+            let marca;
+            let modelo;
+            let memoria;
+            let sd;
+            let procesador;
+            let grafica;
+            
+            let cargarVariables = () =>{
+                marca = document.getElementById("txtMarca");
+                modelo = document.getElementById("txtModelo");
+                memoria = document.getElementById("txtRam");
+                sd = document.getElementById("txtSsd");
+                procesador = document.getElementById("txtProcesador");
+                grafica = document.getElementById("txtGrafica");
+            }
+
+            class Ordenador {
+                constructor(Marca, Modelo, ram, sd, microprocesador, grafica) {
+                    this.Marca = Marca;
+                    this.Modelo = Modelo;
+                    this.Ram = ram;
+                    this.Sd = sd;
+                    this.Microprocesador = microprocesador;
+                    this.Grafica = grafica;
+                }
+            }
+
+            let add = () =>{
+                let ordenador = new Ordenador(marca.value,modelo.value,memoria.value,sd.value, procesador.value ,grafica.value )
+                ordenadores.push(ordenador);
+                console.log(ordenadores);
+            }
+
+            let strHTML = (mereke) =>{  return `<div class="container col-5 flex-column d-flex align-items-center shadow-lg rounded-5 mb-5">
+                                    <h3>modelo</h3>
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <div class="d-flex flex-column align-self-start">
+                                            <h4>${mereke}</h4>
+                                            <h4>memoria:</h4>
+                                            <h4>SSD:</h4>
+                                            <h4>Grafica:</h4>
+                                        </div>
+                                        <div class="align-self-end">
+                                            <h1>IMAGEN</h1>
+                                        </div>
+                                    </div>
+                                </div>`};
+
+            let consultar = () =>{
+
+                let render = document.getElementById('render');
+                render.innerHTML = "";
+
+                for (const ordenador of ordenadores)
+                {
+                    render.innerHTML += strHTML(ordenador.Marca);
+                }
+            }
+
+
+        </script>
+    </body>
+</html>

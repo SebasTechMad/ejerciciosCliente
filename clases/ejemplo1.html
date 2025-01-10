@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>prueba clases</title>
+    </head>
+    <body onload="cargarComponentes();">
+        <h2>introduce tu nombre</h2>
+        <br><input type="text" name="datos" id="">
+        <h2>introduce una contraseña</h2>
+        <br><input type="text" name="datos" id=""><br>
+        <input type="button" value="add usuario" onclick="addUsuario();">
+        <input type="button" value="Subir" onclick="cargarDatos();">
+
+        <script>
+
+            let usuario;
+            let pwd;
+            let usuarios;
+
+            function Usuario(nombre, pwd)
+            {
+                this.nombre = nombre;
+                this.pwd = pwd;
+
+                Usuario.prototype.saludar = function saludar(){
+                    alert("bienvenido "+this.nombre);
+                }
+            }
+
+            function Usuarios() {
+                let listado = new Set();
+
+                Usuarios.prototype.add = function add(usuario){
+                    listado.add(usuario);
+                }
+
+                Usuarios.prototype.visualizarConsole = function visualizarConsole() {
+                    console.log(listado);
+                }
+            }
+
+
+            
+
+            cargarComponentes = () =>{
+                usuario = document.getElementsByName("datos")[0];
+                pwd = document.getElementsByName("datos")[1];
+                usuarios = new Usuarios();
+            }
+
+
+
+            cargarDatos = () =>{
+                usuario = new Usuario(usuario.value, pwd.value);
+                usuarios.add(usuario);
+                usuarios.visualizarConsole();
+            }
+
+
+
+
+        </script>
+    </body>
+</html>

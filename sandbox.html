@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            
+            function Viaje(salida, llegada,pasajeros, precio) {
+                this.salida = salida;
+                this.llegada = llegada;
+                this.pasajeros = pasajeros;
+                this.precio = precio;
+            }
+
+            let miviaje=new Viaje("Madrid","Santander",3,156);
+
+            for (const element of Object.getOwnPropertyNames(miviaje)) {
+                console.log(element);
+            }
+
+        </script>
+    </body>
+</html>
