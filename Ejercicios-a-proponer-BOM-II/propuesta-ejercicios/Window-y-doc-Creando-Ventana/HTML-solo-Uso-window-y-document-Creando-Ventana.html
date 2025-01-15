@@ -13,8 +13,10 @@
                 <tr> 
                     <td height="87" align="center"> 
                     <form name="FORMULARIO" > 
-                        <input type="button" value="Documento con colores" name="B1" onclick="mostrar(1); pintapagina(1);"> 
-                        <input type="button" value="Valores por defecto" name="B2" onclick= "mostrar(0); pintapagina(0);"><br> 
+                        <!-- <input type="button" value="Documento con colores" name="B1" onclick="mostrar(1); pintapagina(1);"> 
+                        <input type="button" value="Valores por defecto" name="B2" onclick= "mostrar(0); pintapagina(0);"><br>  -->
+                        <input type="button" value="Documento con colores" name="B1" onclick="mostrar(1);"> 
+                        <input type="button" value="Valores por defecto" name="B2" onclick= "mostrar(0);"><br> 
                         <textarea rows="4" name="area" cols="20"></textarea> 
                     </form>
                     </td>
@@ -22,22 +24,63 @@
             </table> 
         </center>
         <script>
+
+        
+
         let mostrar = (num) =>{
             (num == 1) ? pintapagina(1):pintapagina(0);
         }
 
         let pintapagina = (num) =>{
-            (num == 1) ? alert("proximamente"):windowDefault();
+            (num == 1) ? windowCustom():windowDefault();
         }
         
         let windowDefault = () =>{
+            let txtCustom = document.getElementsByTagName("textarea")[0];
+            txtCustom.value = "fondo: white, texto: black, link: blue, link visitado: purple";
             let ventana = window.open("", "", "left=50, top=50, width=500, height=600");
+
             ventana.document.write("<h1>Esto es una nueva ventana</h1>");
             ventana.document.write("<a href='https://www.google.es'>Esto es un enlace pa google</a>");
         }
 
         let windowCustom = () =>{
+            let txtCustom = document.getElementsByTagName("textarea")[0].value.trim();
             
+            let comandos = txtCustom.split(",");
+
+            let ventana = window.open("", "", "left=50, top=50, width=500, height=600");
+            ventana.document.write("<h1>Esto es una nueva ventana</h1>");
+            ventana.document.write("<a href='https://www.google.es'>Esto es un enlace pa google</a>");
+            
+
+            for (const comando of comandos)
+            {
+                let atributos = comando.split(":");
+
+                switch (atributos[0].trim().toLocaleLowerCase()) {
+                    case "fondo":
+                        ventana.document.body.style.backgroundColor = atributos[1].trim();
+                        break;
+                    
+                    case "texto":
+                        ventana.document.body.style.color = atributos[1].trim();
+                        break;
+                    
+                    case "link":
+                        ventana.document.linkColor = atributos[1].trim();
+                        break;
+                    
+                    case "link visitado":
+                    ventana.document.vlinkColor = atributos[1].trim();
+                    break;
+
+                    default:
+                        break;
+                }
+
+
+            }
         }
 
 
